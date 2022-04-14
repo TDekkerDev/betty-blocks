@@ -1,41 +1,58 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
+import React,{ Component } from 'react'
 
+
+//het aan maken  via een state
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
+  constructor(props){
+    super(props)
+    this.state = { achternaam:'',name:''}
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
+
 // dit verandert je velue.
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+handleChange(event){
+	this.setState({
+	[event.target.name] : event.target.value
+	})
+}
 
   // als er op Submit word geklick word het element verandert.
-  handleSubmit(event) {
-    document.getElementById('naam').innerHTML = (this.state.value);
-    event.preventDefault();
+  handleSubmit(event){
+    const { achternaam, name} = this.state
+    event.preventDefault()
+    document.getElementById('naam').innerHTML = (name);
+    document.getElementById('achternaam').innerHTML = (achternaam);
   }
 
 //dit word gerender en in de html gestopt.
   render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <br></br>
-        <br></br>
-        <input type="submit" value="Submit" />
-      </form>
-
-      
-    );
+	return(
+    <form onSubmit={this.handleSubmit}>
+      <div>
+      <label htmlFor='name'>Name</label>
+      <input
+        name='name'
+        placeholder='Name'
+        value={this.state.name}
+        onChange={this.handleChange}
+      />
+      </div>
+      <div>
+      <label htmlFor='achternaam'>achternaam</label>
+      <input
+        name='achternaam'
+        placeholder='achternaam'
+        value = {this.state.achternaam}
+        onChange={this.handleChange}
+      />
+      </div>
+      <div>
+      <button  type='submit'>stuur</button>
+      </div>
+    </form>
+    )
   }
 }
 
@@ -73,7 +90,14 @@ const form = () => {
     <div >
       <div >
         <div id="form"></div>
-        <h1 id ='naam'>naam</h1>
+        <label>U naam:     
+        <a id ='naam'></a>
+        </label>
+        <br></br>
+        <br></br>
+        <label>U achternaam:     
+        <a id ='achternaam'></a>
+        </label>
         <h1 id ='time'>time</h1>
       </div>  
     </div>
@@ -83,4 +107,3 @@ const form = () => {
 
 
 export default form
-
