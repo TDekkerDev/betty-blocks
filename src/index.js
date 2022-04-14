@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+//verandert de root in de html naar react
 ReactDOM.render(
   <React.StrictMode>
     <App />
