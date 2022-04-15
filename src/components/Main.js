@@ -1,6 +1,6 @@
 import Form from './Form';
 import Api from './Api'
-import Text from './Text';
+
 
 
 //de html met de ander componeten er in 
