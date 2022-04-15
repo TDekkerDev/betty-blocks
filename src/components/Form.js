@@ -6,6 +6,8 @@ import React,{ Component } from 'react'
 class NameForm extends React.Component {
   constructor(props){
     super(props)
+
+    //het grebruiken van de state
     this.state = { achternaam:'',name:''}
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,6 +23,8 @@ handleChange(event){
   // als er op Submit word geklick word het element verandert.
   handleSubmit(event){
     const { achternaam, name} = this.state
+    localStorage.setItem('name', name);
+    localStorage.setItem('achternaam', achternaam);
     event.preventDefault()
     document.getElementById('naam').innerHTML = (name);
     document.getElementById('achternaam').innerHTML = (achternaam);
